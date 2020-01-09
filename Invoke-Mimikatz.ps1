@@ -80,11 +80,11 @@ function Invoke-BypassUAC
     Set-StrictMode -Version 2.0
 
     # checks to ensure it's appropriate to run BypassUAC
-    if(($(whoami /groups) -like "*S-1-5-32-544*").length -eq 0) {
+    if(($(_whoami /groups) -like "*S-1-5-32-544*").length -eq 0) {
         "[!] Current user not a local administrator!"
         Throw ("Current user not a local administrator!")
     }
-    if (($(whoami /groups) -like "*S-1-16-8192*").length -eq 0) {
+    if (($(_whoami /groups) -like "*S-1-16-8192*").length -eq 0) {
         "[!] Not in a medium integrity process!"
         Throw ("Not in a medium integrity process!")
     }
